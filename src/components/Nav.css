@@ -1,0 +1,22 @@
+nav {
+  background-color: beige;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-ul {
+  display: flex;
+}
+
+.nav-ul > li {
+  margin-left: 16px;
+}
+
+.nav-ul > li > a {
+  padding: 20px;
+  display: block;
+}

@@ -1,0 +1,10 @@
+.content {
+  margin-bottom: 15px;
+  border: 1px solid;
+}
+
+.aside {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
