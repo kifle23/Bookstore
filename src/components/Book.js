@@ -1,28 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
+import { addBook } from '../redux/books/booksSlice';
 import './Book.css';
 import BookRecord from './BookRecord';
 
 function Book() {
-  const books = [
-    {
-      id: 1,
-      type: 'action',
-      title: 'The Hunger Games',
-      author: 'Suzanne Collins',
-    },
-    {
-      id: 2,
-      type: 'action',
-      title: 'Dune',
-      author: 'Frank Herbert',
-    },
-    {
-      id: 3,
-      type: 'action',
-      title: 'Capital in the Twenty-First Century',
-      author: 'Suzanne Collins',
-    },
-  ];
+  const books = useSelector((state) => state.books || []);
+  const dispatch = useDispatch();
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
+  const [type] = useState('action');
   return (
     <>
       <section className="section">
@@ -34,6 +22,7 @@ function Book() {
                 title={book.title}
                 author={book.author}
                 key={book.id}
+                id={book.id}
               />
             ))}
           </div>
@@ -41,20 +30,44 @@ function Book() {
       </section>
       <hr />
       <h2>ADD NEW BOOK</h2>
-      <form action="">
+      <form id="addBook" action="">
         <div className="formcontrol">
           <input
             type="text"
             className="input-text"
             placeholder="Add title"
             name="title"
+            onChange={(e) => {
+              setTitle(e.target.value);
+            }}
           />
           <input
             type="text"
             className="input-text"
             placeholder="Add author"
             name="author"
+            onChange={(e) => {
+              setAuthor(e.target.value);
+            }}
           />
+          <button
+            type="button"
+            onClick={() => {
+              dispatch(
+                addBook({
+                  id: uuidv4(),
+                  type,
+                  title,
+                  author,
+                }),
+              );
+              setTitle('');
+              setAuthor('');
+              document.getElementById('addBook').reset();
+            }}
+          >
+            Add
+          </button>
         </div>
       </form>
     </>

@@ -1,36 +1,39 @@
 import { v4 as uuidv4 } from 'uuid';
 
-const initialState = {
-  books: [],
-};
+const initialState = [
+  {
+    id: uuidv4(),
+    type: 'action',
+    title: 'The Hunger Games',
+    author: 'Suzanne Collins',
+  },
+  {
+    id: uuidv4(),
+    type: 'action',
+    title: 'Dune',
+    author: 'Frank Herbert',
+  },
+  {
+    id: uuidv4(),
+    type: 'action',
+    title: 'Capital in the Twenty-First Century',
+    author: 'Suzanne Collins',
+  },
+];
 
 const ADD_BOOK = 'ADD_BOOK';
 const REMOVE_BOOK = 'REMOVE_BOOK';
-let newBook;
 
-const booksReducer = (state = initialState, action) => {
+export default function booksReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_BOOK:
-      newBook = {
-        id: uuidv4(),
-        title: action.payload.title,
-        author: action.payload.author,
-      };
-      return {
-        ...state,
-        books: [...state.books, newBook],
-      };
+      return [...state, action.payload];
     case REMOVE_BOOK:
-      return {
-        ...state,
-        books: state.books.filter((book) => book.id !== action.payload.id),
-      };
+      return state.filter((book) => book.id !== action.payload.id);
     default:
       return state;
   }
-};
+}
 
-const addBook = (book) => ({ type: ADD_BOOK, payload: book });
-const removeBook = (book) => ({ type: REMOVE_BOOK, payload: book });
-
-export { booksReducer, addBook, removeBook };
+export const addBook = (book) => ({ type: ADD_BOOK, payload: book });
+export const removeBook = (book) => ({ type: REMOVE_BOOK, payload: book });

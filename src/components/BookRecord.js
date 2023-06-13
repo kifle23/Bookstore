@@ -1,8 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import './BookRecord.css';
+import { removeBook } from '../redux/books/booksSlice';
 
-function BookRecord({ type, title, author }) {
+function BookRecord({
+  id, type, title, author,
+}) {
+  const dispatch = useDispatch();
   return (
     <>
       <div className="content">
@@ -12,7 +17,9 @@ function BookRecord({ type, title, author }) {
             <div>{title}</div>
             <div>{author}</div>
             <button type="button">Comments</button>
-            <button type="button">Remove</button>
+            <button type="button" onClick={() => dispatch(removeBook({ id }))}>
+              Remove
+            </button>
             <button type="button">Edit</button>
           </div>
           <div className="aside_center">
@@ -38,6 +45,7 @@ function BookRecord({ type, title, author }) {
 }
 
 BookRecord.propTypes = {
+  id: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
