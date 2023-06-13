@@ -29,47 +29,51 @@ function Book() {
         </div>
       </section>
       <hr />
-      <h2>ADD NEW BOOK</h2>
-      <form id="addBook" action="">
-        <div className="formcontrol">
-          <input
-            type="text"
-            className="input-text"
-            placeholder="Add title"
-            name="title"
-            onChange={(e) => {
-              setTitle(e.target.value);
-            }}
-          />
-          <input
-            type="text"
-            className="input-text"
-            placeholder="Add author"
-            name="author"
-            onChange={(e) => {
-              setAuthor(e.target.value);
-            }}
-          />
-          <button
-            type="button"
-            onClick={() => {
-              dispatch(
-                addBook({
-                  id: uuidv4(),
-                  type,
-                  title,
-                  author,
-                }),
-              );
-              setTitle('');
-              setAuthor('');
-              document.getElementById('addBook').reset();
-            }}
-          >
-            Add
-          </button>
+      <div className="container">
+        <h2>ADD NEW BOOK</h2>
+        <div className="nav">
+          <form id="addBook" action="">
+            <div className="formcontrol">
+              <input
+                type="text"
+                className="input-text"
+                placeholder="Add title"
+                name="title"
+                onChange={(e) => {
+                  setTitle(e.target.value);
+                }}
+              />
+              <input
+                type="text"
+                className="input-text"
+                placeholder="Add author"
+                name="author"
+                onChange={(e) => {
+                  setAuthor(e.target.value);
+                }}
+              />
+              <button
+                type="button"
+                onClick={() => {
+                  dispatch(
+                    addBook({
+                      id: uuidv4(),
+                      type,
+                      title,
+                      author,
+                    }),
+                  );
+                  setTitle('');
+                  setAuthor('');
+                  document.getElementById('addBook').reset();
+                }}
+              >
+                Add
+              </button>
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
     </>
   );
 }
