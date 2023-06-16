@@ -15,15 +15,15 @@ function Nav() {
             </div>
             <ul className="nav-ul">
               <li>
-                <NavLink to="/book">Book</NavLink>
+                <NavLink to="/book">BOOKS</NavLink>
               </li>
               <li>
-                <NavLink to="/categories">Categories</NavLink>
+                <NavLink to="/categories">CATEGORIES</NavLink>
               </li>
             </ul>
             <div className="nav-user">
-              <span id="user">
-                <FontAwesomeIcon icon={faUser} />
+              <span className="user">
+                <FontAwesomeIcon className="icon" icon={faUser} />
               </span>
             </div>
           </div>

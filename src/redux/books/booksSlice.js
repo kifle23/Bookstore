@@ -7,10 +7,6 @@ export const fetchBooks = createAsyncThunk(
   'books/fetchBooks',
   async (_, thunkCB) => {
     try {
-      // const response = await axios.get(url);
-      // const { data } = response;
-      // const books = Object.values(data);
-      // return books;
       const response = await axios(url);
       return response.data;
     } catch (err) {

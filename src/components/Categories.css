@@ -1,3 +1,20 @@
-#catButton {
-  font-size: 15px;
+.ulcategory {
+  max-height: 236px;
+  background-color: #c72121;
+  color: #fff;
+  overflow-y: auto;
+  width: fit-content;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.category {
+  background-color: #2e3d49;
+  color: #fff;
+  width: 481px;
+  margin: 18px 30px;
+  padding: 8px;
+  border-radius: 5px;
+  list-style-type: disclosure-closed;
 }

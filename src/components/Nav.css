@@ -1,11 +1,17 @@
 nav {
-  background-color: beige;
+  background-color: #fff;
 }
 
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.nav-brand > a {
+  font-size: 24px;
+  color: #0290ff;
+  font-weight: bolder;
 }
 
 .nav-ul {
@@ -19,4 +25,17 @@ nav {
 .nav-ul > li > a {
   padding: 20px;
   display: block;
+}
+
+.user {
+  width: 2.813rem;
+  height: 2.813rem;
+  margin: 0 0 0 41.5rem;
+  padding: 0.875rem;
+  border: solid 1px #e8e8e8;
+  border-radius: 50%;
+}
+
+.icon {
+  color: #0290ff;
 }
