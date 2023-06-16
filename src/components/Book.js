@@ -51,7 +51,7 @@ function Book() {
           {Object.entries(books).map(([id, book]) => book.map((bookList) => (
             <div className="content" key={id}>
               <div className="aside">
-                <div className="aside-left">
+                <div className="aside-left" style={{ flex: 5 }}>
                   <div className="cat">{bookList.category}</div>
                   <div className="title">{bookList.title}</div>
                   <div className="author">{bookList.author}</div>
@@ -67,7 +67,7 @@ function Book() {
                   </button>
                   <button type="button">Edit</button>
                 </div>
-                <div className="aside-center">
+                <div className="aside-center" style={{ flex: 2 }}>
                   <div className="percent">
                     <div className="loader" style={backGround}>
                       <div className="box"> </div>
@@ -78,7 +78,7 @@ function Book() {
                     </div>
                   </div>
                 </div>
-                <div className="aside-right">
+                <div className="aside-right" style={{ flex: 3 }}>
                   <p className="current-chapter">CURRENT CHAPTER</p>
                   <span className="chapter">Chapter 17</span>
                   <button type="button">UPDATE PROGRESS</button>
@@ -124,7 +124,7 @@ function Book() {
               >
                 <option value="fiction">Fiction</option>
                 <option value="sci-fi">Sci-fi</option>
-                <option value="adventure">Adventure</option>
+                <option value="Adventure">Adventure</option>
               </select>
               <button style={{ flex: 1 }} type="button" onClick={handleAddBook}>
                 Add

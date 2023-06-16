@@ -10,6 +10,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 3rem;
 }
 
 .aside-left > button {
@@ -171,6 +172,14 @@
   border-radius: 5px;
   padding: 10px;
   width: 85%;
+}
+
+hr {
+  margin: 0 auto;
+  width: 84%;
+  color: #e8e8e8;
+  height: 0.125rem;
+  border: solid 1px #e8e8e8;
 }
 
 .input-select {
