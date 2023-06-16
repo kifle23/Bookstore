@@ -11,7 +11,12 @@ function Book() {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
-  const [category] = useState('Action');
+  const [category, setcategory] = useState('Fiction');
+
+  const backGround = {
+    backgroundImage:
+      'radial-gradient(circle closest-side, white 79%, transparent 80% 100%), conic-gradient(at 50% 50%, #379cf6 65%, rgb(226, 226, 226) 0)',
+  };
 
   if (isLoading) {
     return <div style={{ marginTop: '50px' }}>Loading...</div>;
@@ -42,17 +47,18 @@ function Book() {
   return (
     <>
       <section className="section">
-        <div className="container">
+        <div className="container-main">
           {Object.entries(books).map(([id, book]) => book.map((bookList) => (
             <div className="content" key={id}>
               <div className="aside">
-                <div className="aside_left">
-                  <div>{bookList.category}</div>
-                  <div>{bookList.title}</div>
-                  <div>{bookList.author}</div>
+                <div className="aside-left">
+                  <div className="cat">{bookList.category}</div>
+                  <div className="title">{bookList.title}</div>
+                  <div className="author">{bookList.author}</div>
                   <button type="button">Comments</button>
                   <button
                     type="button"
+                    className="remove-btn"
                     onClick={() => {
                       dispatch(removeBook(id));
                     }}
@@ -61,20 +67,20 @@ function Book() {
                   </button>
                   <button type="button">Edit</button>
                 </div>
-                <div className="aside_center">
+                <div className="aside-center">
                   <div className="percent">
-                    <div className="loader">
-                      <div className="box">Progress Graph</div>
+                    <div className="loader" style={backGround}>
+                      <div className="box"> </div>
                     </div>
-                    <div className="">
-                      <span id="percent_value">64%</span>
-                      <span id="percent_status">Completed</span>
+                    <div>
+                      <span className="percent-value">64%</span>
+                      <span className="percent-status">Completed</span>
                     </div>
                   </div>
                 </div>
-                <div className="aside_right">
-                  <p>CURRENT CHAPTER</p>
-                  <span>Chapter 17</span>
+                <div className="aside-right">
+                  <p className="current-chapter">CURRENT CHAPTER</p>
+                  <span className="chapter">Chapter 17</span>
                   <button type="button">UPDATE PROGRESS</button>
                 </div>
               </div>
@@ -84,14 +90,15 @@ function Book() {
       </section>
       <hr />
       <div className="container">
-        <h2>ADD NEW BOOK</h2>
-        <div className="nav">
+        <h2 className="addhead">ADD NEW BOOK</h2>
+        <div>
           <form id="addBook" action="">
             <div className="formcontrol">
               <input
                 type="text"
                 className="input-text"
                 placeholder="Add title"
+                style={{ flex: 4 }}
                 name="title"
                 value={title}
                 onChange={(e) => {
@@ -102,13 +109,24 @@ function Book() {
                 type="text"
                 className="input-text"
                 placeholder="Add author"
+                style={{ flex: 3 }}
                 name="author"
                 value={author}
                 onChange={(e) => {
                   setAuthor(e.target.value);
                 }}
               />
-              <button type="button" onClick={handleAddBook}>
+              <select
+                className="input-select"
+                value={category}
+                style={{ flex: 2 }}
+                onChange={(e) => setcategory(e.target.value)}
+              >
+                <option value="fiction">Fiction</option>
+                <option value="sci-fi">Sci-fi</option>
+                <option value="adventure">Adventure</option>
+              </select>
+              <button style={{ flex: 1 }} type="button" onClick={handleAddBook}>
                 Add
               </button>
             </div>
